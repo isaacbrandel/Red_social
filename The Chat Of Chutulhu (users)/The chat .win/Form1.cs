@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Chat.BL;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -19,7 +20,13 @@ namespace The_chat.win
 
         private void button1_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Hola Mundo");
+            var cateBL = new CategoriaBL();
+            var Lista_categorias = cateBL.MostrarCategorias();
+            foreach (var Categoria in Lista_categorias)
+            {
+                MessageBox.Show(Categoria.Descripcion);
+
+            }
         }
     }
 }

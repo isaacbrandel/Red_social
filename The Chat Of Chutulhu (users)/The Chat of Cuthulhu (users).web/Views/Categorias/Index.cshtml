@@ -1,13 +1,21 @@
-﻿@model List<The_Chat_of_Cuthulhu__users_.web.Models.CategoriasModel>
+﻿@model List<Chat.BL.Categoria>
+
 @{
     ViewBag.Title = "Categorias";
 }
 
 <h2>Categorias</h2>
 
-@foreach (var categoria in Model)
-{
-    <p>@categoria.nombre</p>
-    <p>@categoria.descripcion</p>
-}
+<table class="table-bordered table-hover" >
+    
+    @foreach (var categoria in Model)
+    {
+        <tr>
+            <td>@categoria.Nombre</td>
+            <td>@categoria.Descripcion</td>
+        </tr>
+
+    }
+   
+</table>
 
