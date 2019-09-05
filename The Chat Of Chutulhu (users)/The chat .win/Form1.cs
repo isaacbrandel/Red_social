@@ -16,17 +16,14 @@ namespace The_chat.win
         public Form1()
         {
             InitializeComponent();
-        }
-
-        private void button1_Click(object sender, EventArgs e)
-        {
             var cateBL = new CategoriaBL();
             var Lista_categorias = cateBL.MostrarCategorias();
-            foreach (var Categoria in Lista_categorias)
-            {
-                MessageBox.Show(Categoria.Descripcion);
+            listaCategoriaBindingSource.DataSource = Lista_categorias;
+        }
 
-            }
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

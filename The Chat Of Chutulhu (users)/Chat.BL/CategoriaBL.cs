@@ -8,16 +8,21 @@ namespace Chat.BL
 {
     public class CategoriaBL
     {
+
         Contexto _contexto;
+        public List<Categoria> ListaCategoria { get; set; }
         public CategoriaBL()
         {
             _contexto = new Contexto();
+            ListaCategoria = new List<Categoria>();
         }
         public List<Categoria> MostrarCategorias()
         {
+            ListaCategoria = _contexto.Categorias.ToList();
+
+
+            return ListaCategoria;
             
-            
-            return _contexto.Categorias.ToList(); ;
         }
     }
 }
