@@ -24,5 +24,10 @@ namespace Chat.BL
             return ListaCategoria;
             
         }
+        public void GuardarCategoria(Categoria categoria)
+        {
+            _contexto.Categorias.Add(categoria);
+            _contexto.SaveChanges();
+        }   
     }
 }
