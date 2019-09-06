@@ -12,6 +12,7 @@ namespace Chat.BL
         {
             Activo = true;
         }
+
         public int Id { get; set; }
         public String Nombre { get; set; }
         public String Sipnosis { get; set; }

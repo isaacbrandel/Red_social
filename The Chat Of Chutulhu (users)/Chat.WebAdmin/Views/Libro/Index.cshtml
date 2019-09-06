@@ -4,7 +4,7 @@
     ViewBag.Title = "Libros";
 }
 
-<h2>Categorias</h2>
+<h2>Libros</h2>
 
 <p>
     @Html.ActionLink("Nuevos Libros", "Crear")
@@ -17,7 +17,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Sipnosis)
         </th>
-        <th></th>
+        
     </tr>
 
     @foreach (var item in Model)

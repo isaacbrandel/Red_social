@@ -32,6 +32,7 @@ namespace Chat.BL
             else
             {
                 var LibroExistente = _contexto.Libros.Find(libro.Id);
+                LibroExistente.Id = libro.Id;
                 LibroExistente.Nombre = libro.Nombre;
                 LibroExistente.Sipnosis = libro.Sipnosis;
             }

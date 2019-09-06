@@ -10,9 +10,11 @@ namespace Chat.WebAdmin.Controllers
     public class LibroController : Controller
     {
         LibroBL _libroBL;
+        CategoriaBL _categoriasBL;
         public LibroController()
         {
             _libroBL= new LibroBL();
+            _categoriasBL = new CategoriaBL();
 
         }
         // GET: Libro
@@ -24,6 +26,8 @@ namespace Chat.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var Nuevo_libro = new Libro();
+            var categorias = _categoriasBL.MostrarCategorias();
+           ViewBag.ListaCategoria = new SelectList(categorias, "ID", "Nombre", "Descripcion");
             return View(Nuevo_libro);
         }
         [HttpPost]
