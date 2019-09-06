@@ -52,6 +52,8 @@
     <Compile Include="Categoria.cs" />
     <Compile Include="CategoriaBL.cs" />
     <Compile Include="Contexto.cs" />
+    <Compile Include="Libro.cs" />
+    <Compile Include="LibroBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

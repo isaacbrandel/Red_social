@@ -21,6 +21,7 @@ namespace Chat.BL
         }
 
         public DbSet<Categoria> Categorias { get; set; }
+        public DbSet<Libro> Libros { get; set; }
 
     }
 }

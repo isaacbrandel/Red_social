@@ -25,9 +25,29 @@ namespace Chat.BL
             
         }
         public void GuardarCategoria(Categoria categoria)
-        {
-            _contexto.Categorias.Add(categoria);
+        {    if(categoria.ID== 0)
+            {
+                _contexto.Categorias.Add(categoria);
+            }
+            else
+            {
+                var categoriaExistente = _contexto.Categorias.Find(categoria.ID);
+                categoriaExistente.Nombre = categoria.Nombre;
+                categoriaExistente.Descripcion = categoria.Descripcion;
+            }
+          
             _contexto.SaveChanges();
-        }   
+        }  
+        public Categoria MostrarCategorias(int id)
+        {
+            var categoria = _contexto.Categorias.Find(id);
+            return categoria;
+        }
+        public void EliminarCategoria(int id)
+        {
+            var categoria = _contexto.Categorias.Find(id);
+            _contexto.Categorias.Remove(categoria);
+            _contexto.SaveChanges();
+        }
     }
 }

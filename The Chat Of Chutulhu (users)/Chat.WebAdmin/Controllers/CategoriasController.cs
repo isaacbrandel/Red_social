@@ -32,5 +32,36 @@ namespace Chat.WebAdmin.Controllers
             _categoriasBL.GuardarCategoria(categoria);
             return RedirectToAction("Index");
         }
+        public ActionResult Editar(int id)
+        {
+           var categoria = _categoriasBL.MostrarCategorias(id);
+
+            return View(categoria);
+        }
+        [HttpPost]
+        public ActionResult Editar(Categoria categoria)
+        {
+            _categoriasBL.GuardarCategoria(categoria);
+            return RedirectToAction("Index");
+        }
+        public ActionResult Detalle(int id)
+        {
+            var categoria = _categoriasBL.MostrarCategorias(id);
+
+            return View(categoria);
+        }
+        public ActionResult Eliminar(int id)
+        {
+            var categoria = _categoriasBL.MostrarCategorias(id);
+
+            return View(categoria);
+        }
+        [HttpPost]
+        public ActionResult Eliminar(Categoria categoria)
+        {
+            _categoriasBL.EliminarCategoria(categoria.ID);
+            return RedirectToAction("Index");
+        }
+
     }
 }
