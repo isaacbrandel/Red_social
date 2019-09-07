@@ -17,6 +17,9 @@
         <th>
             @Html.DisplayNameFor(model => model.Sipnosis)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </th>
         
     </tr>
 
@@ -28,6 +31,9 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Sipnosis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categoria.Descripcion)
             </td>
             <td>
                 @Html.ActionLink("Editar", "Editar", new { id = item.Id }) |

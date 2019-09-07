@@ -17,7 +17,8 @@ namespace Chat.BL
         }
         public List<Libro> MostrarLibros()
         {
-            ListaLibro = _contexto.Libros.ToList();
+            ListaLibro = _contexto.Libros.Include("Categoria").ToList();
+
 
 
             return ListaLibro;
