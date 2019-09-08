@@ -29,8 +29,12 @@ namespace Chat.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Crear(Categoria categoria)
         {
-            _categoriasBL.GuardarCategoria(categoria);
-            return RedirectToAction("Index");
+            if(ModelState.IsValid)
+            {
+                _categoriasBL.GuardarCategoria(categoria);
+                return RedirectToAction("Index");
+            }
+            return View(categoria);
         }
         public ActionResult Editar(int id)
         {

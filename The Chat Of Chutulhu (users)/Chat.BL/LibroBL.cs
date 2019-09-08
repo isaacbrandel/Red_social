@@ -17,7 +17,9 @@ namespace Chat.BL
         }
         public List<Libro> MostrarLibros()
         {
-            ListaLibro = _contexto.Libros.Include("Categoria").ToList();
+            ListaLibro = _contexto.Libros
+                .Include("Categoria")
+                .ToList();
 
 
 
@@ -35,6 +37,7 @@ namespace Chat.BL
                 var LibroExistente = _contexto.Libros.Find(libro.Id);
                 LibroExistente.Id = libro.Id;
                 LibroExistente.Nombre = libro.Nombre;
+                LibroExistente.Categoria = libro.Categoria;
                 LibroExistente.Sipnosis = libro.Sipnosis;
             }
 
@@ -42,7 +45,7 @@ namespace Chat.BL
         }
         public Libro Mostrarlibros(int id)
         {
-            var libro = _contexto.Libros.Find(id);
+                 var libro = _contexto.Libros.Include("Categoria").FirstOrDefault(p => p.Id == id);
             return libro;
         }
         public void EliminarLibro(int id)

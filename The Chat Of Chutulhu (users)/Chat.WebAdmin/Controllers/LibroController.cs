@@ -26,15 +26,28 @@ namespace Chat.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var Nuevo_libro = new Libro();
-            var categorias = _categoriasBL.MostrarCategorias();
-           ViewBag.ListaCategoria = new SelectList(categorias, "ID", "Nombre", "Descripcion");
+            var Categoria = _categoriasBL.MostrarCategorias();
+           ViewBag.ListaCategoria = new SelectList(Categoria, "ID", "Nombre");
             return View(Nuevo_libro);
         }
+
+
         [HttpPost]
-        public ActionResult Crear(Libro libro)
+        public ActionResult Crear(Libro libro, HttpPostedFileBase imagen)
         {
-            _libroBL.GuardarLibro(libro);
-            return RedirectToAction("Index");
+        
+            if (ModelState.IsValid)
+            {
+                _libroBL.GuardarLibro(libro);
+                return RedirectToAction("Index");
+            }
+            if (imagen != null)
+            {
+                libro.Urlimag = GuardarImagen(imagen);
+            }
+                var Categoria = _categoriasBL.MostrarCategorias();
+            ViewBag.ListaCategoria = new SelectList(Categoria, "ID", "Nombre");
+            return View(libro);
         }
         public ActionResult Editar(int id)
         {
@@ -65,6 +78,13 @@ namespace Chat.WebAdmin.Controllers
         {
             _libroBL.EliminarLibro(libro.Id);
             return RedirectToAction("Index");
+        }
+
+        private string GuardarImagen(HttpPostedFileBase imagen)
+        {
+            string path = Server.MapPath("~/Imagenes/" + imagen.FileName);
+            imagen.SaveAs(path);
+            return "/Imagenes/" + imagen.FileName;
         }
 
 
