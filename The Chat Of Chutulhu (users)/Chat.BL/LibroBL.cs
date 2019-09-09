@@ -39,6 +39,8 @@ namespace Chat.BL
                 LibroExistente.Nombre = libro.Nombre;
                 LibroExistente.Categoria = libro.Categoria;
                 LibroExistente.Sipnosis = libro.Sipnosis;
+                LibroExistente.ListaCategoria = libro.ListaCategoria;
+                LibroExistente.Urlimag = libro.Urlimag;
             }
 
             _contexto.SaveChanges();

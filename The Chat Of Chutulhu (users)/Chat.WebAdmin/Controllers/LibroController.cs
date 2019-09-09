@@ -26,8 +26,8 @@ namespace Chat.WebAdmin.Controllers
         public ActionResult Crear()
         {
             var Nuevo_libro = new Libro();
-            var Categoria = _categoriasBL.MostrarCategorias();
-           ViewBag.ListaCategoria = new SelectList(Categoria, "ID", "Nombre");
+            var categoria = _categoriasBL.MostrarCategorias();
+           ViewBag.ListaCategoria = new SelectList(categoria, "ID", "Nombre");
             return View(Nuevo_libro);
         }
 
@@ -35,18 +35,18 @@ namespace Chat.WebAdmin.Controllers
         [HttpPost]
         public ActionResult Crear(Libro libro, HttpPostedFileBase imagen)
         {
-        
+
             if (ModelState.IsValid)
             {
+               if (imagen != null)
+                {
+                    libro.Urlimag = GuardarImagen(imagen);
+                }
                 _libroBL.GuardarLibro(libro);
                 return RedirectToAction("Index");
             }
-            if (imagen != null)
-            {
-                libro.Urlimag = GuardarImagen(imagen);
-            }
-                var Categoria = _categoriasBL.MostrarCategorias();
-            ViewBag.ListaCategoria = new SelectList(Categoria, "ID", "Nombre");
+            var categoria = _categoriasBL.MostrarCategorias();
+            ViewBag.ListaCategoria = new SelectList(categoria, "ID", "Nombre");
             return View(libro);
         }
         public ActionResult Editar(int id)
@@ -56,11 +56,23 @@ namespace Chat.WebAdmin.Controllers
             return View(libro);
         }
         [HttpPost]
-        public ActionResult Editar(Libro libro)
+        public ActionResult Editar(Libro libro, HttpPostedFileBase imagen)
         {
-            _libroBL.GuardarLibro(libro);
-            return RedirectToAction("Index");
+            if (ModelState.IsValid)
+            {
+                if (imagen != null)
+                {
+                    libro.Urlimag = GuardarImagen(imagen);
+                }
+
+                _libroBL.GuardarLibro(libro);
+
+                return RedirectToAction("Index");
+            }
+                return View(libro);
         }
+           
+        
         public ActionResult Detalle(int id)
         {
             var libro = _libroBL.Mostrarlibros(id);

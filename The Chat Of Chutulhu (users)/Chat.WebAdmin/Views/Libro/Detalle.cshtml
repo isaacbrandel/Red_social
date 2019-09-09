@@ -17,7 +17,12 @@
         <dd>
             @Html.DisplayFor(model => model.Nombre)
         </dd>
-
+        <dt>
+            @Html.DisplayNameFor(model => model.Categoria)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Categoria.Nombre)
+        </dd>
         <dt>
             @Html.DisplayNameFor(model => model.Sipnosis)
         </dt>
@@ -25,8 +30,14 @@
         <dd>
             @Html.DisplayFor(model => model.Sipnosis)
         </dd>
-
         <dt>
+            @Html.DisplayNameFor(model => model.Urlimag)
+        </dt>
+
+        <dd>
+            <img src="@Model.Urlimag" alt="@Model.Nombre" style="width:200px; height:auto;" />
+        </dd>
+         <dt>
             @Html.DisplayNameFor(model => model.Activo)
         </dt>
 

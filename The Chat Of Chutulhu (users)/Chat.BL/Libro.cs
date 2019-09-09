@@ -19,10 +19,12 @@ namespace Chat.BL
         public String Nombre { get; set; }
         [Required(ErrorMessage = "Ingrese la Sipnosis")]
         public String Sipnosis { get; set; }
+        public int ListaCategoria { get; set; }
         /*[Required(ErrorMessage = "Seleccione la Categoria")]*/
         public Categoria Categoria { get; set; }
         [Display(Name = "Imagen")]
         public string Urlimag { get; set; }
+
         public string UrlDescarga { get; set; }
         public bool Activo { get; set; }
     }

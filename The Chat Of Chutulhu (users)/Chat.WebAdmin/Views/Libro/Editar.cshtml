@@ -32,14 +32,15 @@
             </div>
         </div>
 
-         <div class="form-group">
-               <label class="control-label col-md-2">Seleccionar Imagen</label>
-                        <div class="col-md-2">
-                            <input type="file" name="imagen" id="imagen" />
-                        </div>
-                        <div class="col-md-8">
-                          <img src="@Model.Urlimag" alt="@Model.Sipnosis" style="width:200px; height:auto;"/>
-                        </div>
+            <div class="form-group">
+                <label class="control-label col-md-2">Seleccionar Imagen</label>
+                <div class="col-md-2">
+                    <input type="file" name="imagen" id="imagen" />
+                </div>
+                <div class="col-md-8">
+                    <img src="@Model.Urlimag" alt="@Model.Nombre" style="width:200px; height:auto;" />
+                </div>
+            </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.Activo, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -62,5 +63,4 @@
 <div>
     @Html.ActionLink("Back to List", "Index")
 </div>
-</div>
-}
+
