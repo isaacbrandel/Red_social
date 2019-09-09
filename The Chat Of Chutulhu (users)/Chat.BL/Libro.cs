@@ -24,8 +24,9 @@ namespace Chat.BL
         public Categoria Categoria { get; set; }
         [Display(Name = "Imagen")]
         public string Urlimag { get; set; }
+        public int descargaId { get; set; }
+        public Descarga descarga { get; set; }
 
-        public string UrlDescarga { get; set; }
         public bool Activo { get; set; }
     }
 }

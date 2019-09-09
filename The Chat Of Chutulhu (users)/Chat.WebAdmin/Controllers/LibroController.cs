@@ -11,10 +11,12 @@ namespace Chat.WebAdmin.Controllers
     {
         LibroBL _libroBL;
         CategoriaBL _categoriasBL;
+        DescargaBL _descargaBL;
         public LibroController()
         {
             _libroBL= new LibroBL();
             _categoriasBL = new CategoriaBL();
+            _descargaBL = new DescargaBL(); 
 
         }
         // GET: Libro
@@ -27,7 +29,9 @@ namespace Chat.WebAdmin.Controllers
         {
             var Nuevo_libro = new Libro();
             var categoria = _categoriasBL.MostrarCategorias();
-           ViewBag.ListaCategoria = new SelectList(categoria, "ID", "Nombre");
+            ViewBag.ListaCategoria = new SelectList(categoria, "ID", "Nombre");
+            var link = _descargaBL.MostrarLinks();
+            ViewBag.DescargaId = new SelectList(link, "Id", "Nombre");
             return View(Nuevo_libro);
         }
 
@@ -47,6 +51,8 @@ namespace Chat.WebAdmin.Controllers
             }
             var categoria = _categoriasBL.MostrarCategorias();
             ViewBag.ListaCategoria = new SelectList(categoria, "ID", "Nombre");
+            var link = _descargaBL.MostrarLinks();
+            ViewBag.DescargaId = new SelectList(link, "Id", "Nombre");
             return View(libro);
         }
         public ActionResult Editar(int id)
