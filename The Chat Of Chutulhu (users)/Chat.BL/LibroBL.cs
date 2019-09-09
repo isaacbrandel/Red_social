@@ -20,7 +20,7 @@ namespace Chat.BL
             ListaLibro = _contexto.Libros
                 .Include("Categoria")
                 .ToList();
-
+            //ListaLibro = _contexto.Libros.Include("Descarga").ToList();
 
 
             return ListaLibro;
@@ -40,6 +40,7 @@ namespace Chat.BL
                 LibroExistente.Categoria = libro.Categoria;
                 LibroExistente.Sipnosis = libro.Sipnosis;
                 LibroExistente.ListaCategoria = libro.ListaCategoria;
+                LibroExistente.descargaId = libro.descargaId;
                 LibroExistente.Urlimag = libro.Urlimag;
             }
 
